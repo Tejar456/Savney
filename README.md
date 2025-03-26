@@ -1,94 +1,59 @@
-pm i# Tailwind 4 Nuxt Starter
+# Savney Project
 
-If you [follow this guide](https://flowbite.com/docs/getting-started/nuxt-js/) you will learn how to install the latest version 3 of Nuxt with Tailwind CSS v4 and Flowbite and also show you how to use the TypeScript version.
+## Description
+A modern web application built with Nuxt.js, featuring data visualization components and authentication system.
 
-## Create a Nuxt project
+## Features
+- Interactive data visualization with Linechart and Piechart components
+- Date selection with custom Datepicker component
+- Authentication system with dedicated layout
+- Responsive navigation with Navbar component
+- FlowBite integration for UI components
 
-Before continuing make sure that you have Node.js and NPM installed on your local machine.
+## Tech Stack
+- Nuxt.js 3
+- Vue.js
+- TypeScript
+- FlowBite
 
-1. Create a new Nuxt project by running the following command in your terminal:
-
-```bash
-npx nuxi init flowbite-app
-cd flowbite-app
+## Project Structure
+```
+├── assets/          # Static assets (CSS, images)
+├── components/      # Vue components
+├── composables/     # Composable functions
+├── layouts/         # Page layouts
+├── pages/          # Application views
+├── public/         # Public static files
+├── server/         # Server-side code
+└── .nuxt/          # Nuxt build files
 ```
 
-2. Install the project dependencies by executing the following command:
+## Getting Started
 
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
 ```bash
+# Clone the repository
+git clone [repository-url]
+
+# Install dependencies
 npm install
-```
 
-3. Run the following command to start a local development server on `http://localhost:3000/`:
-
-```bash
+# Start development server
 npm run dev
 ```
 
-This will make the Nuxt project accessible via the browser.
-
-## Install Tailwind CSS
-
-Now that you have locally set up a Nuxt project we will proceed by installing Tailwind CSS.
-
-1. Require and install the NuxtTailwind module by installing it via NPM:
-
+### Build
 ```bash
-npm install tailwindcss @tailwindcss/vite --save
+# Build for production
+npm run build
+
+# Launch production server
+npm run start
 ```
 
-2. Configure the Nuxt configuration file to include the Tailwind module:
-
-```javascript
-import tailwindcss from "@tailwindcss/vite";
-
-export default defineNuxtConfig({
-  devtools: { enabled: true },
-  css: ['~/assets/css/input.css'], // you'll have to create this file
-  vite: {
-    plugins: [
-      tailwindcss(),
-    ],
-  },
-});
-```
-
-3. Create a new CSS file `./assets/css/input.css` and import Tailwind:
-
-```css
-@import "tailwindcss";
-```
-
-Tailwind CSS is now configured in your project and if you add the utility classes anywhere in your Vue template files the CSS will be generated and included.
-
-## Install Flowbite
-
-After installing both Nuxt and Tailwind CSS inside your project we can proceed by installing Flowbite.
-
-1. Install Flowbite as a dependency using NPM by running the following command:
-
-```bash
-npm install flowbite --save
-```
-
-2. Import the default theme variables from Flowbite inside your main `input.css` CSS file:
-
-```css
-@import "flowbite/src/themes/default";
-```
-
-3. Import the Flowbite plugin file in your CSS:
-
-```css
-@plugin "flowbite/plugin";
-```
-
-4. Configure the source files of Flowbite in your CSS:
-
-```css
-@source "../../node_modules/flowbite";
-```
-
-## Flowbite Components
-
-Now that you have successfully installed Nuxt, Tailwind CSS and Flowbite you can start importing and using components from the open-source library of [Flowbite](https://flowbite.com) such as modals, navbars, tables, dropdowns, and more.
+## Development
+The application runs on `http://localhost:3000` by default.
