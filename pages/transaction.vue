@@ -1,7 +1,7 @@
 <template>
-  <div class="h-full w-full flex flex-col items-center gap-10 px-10 py-5">
+  <div class="h-full w-full flex flex-col items-center gap-10 p-5 md:p-10">
     <div
-      class="bg-white w-full h-1/2 rounded-xl p-5 drop-shadow-lg text-primary"
+      class="bg-white w-full h-full rounded-xl p-5 drop-shadow-lg text-primary"
     >
       <h2 class="font-semibold text-lg mb-5">Transaction history</h2>
       <div
@@ -41,9 +41,9 @@
         />
       </div>
     </div>
-    <NuxtLink to="/add">
+    <NuxtLink to="/add?source=expense">
       <button
-        class="bg-primary text-white py-2 px-3 rounded-lg fixed bottom-25 right-10"
+        class="bg-primary text-white py-2 px-3 rounded-lg fixed bottom-25 right-10 lg:bottom-10 lg:right-10"
       >
         + Add
       </button>

@@ -11,14 +11,14 @@
       "id": 2,
       "name": "Bukber",
       "date": "20/03/2025",
-      "amount": 35000,
+      "amount": -35000,
       "type": "Expense"
     },
     {
       "id": 3,
       "name": "Electricity Bill",
       "date": "19/03/2025",
-      "amount": 300000,
+      "amount": -300000,
       "type": "Expense"
     }
   ],

@@ -1,7 +1,7 @@
 <template>
-  <div class="fixed bottom-3 w-full z-50 flex justify-center px-5">
+  <div class="fixed top-0 left-0 h-screen z-50">
     <div
-      class="bg-primary mx-auto flex justify-center items-center w-full  py-4 rounded-lg text-white gap-6"
+      class="bg-primary mx-auto flex flex-col items-center w-28 h-full py-5 text-white gap-6"
     >
       <NuxtLink to="/" class="flex flex-col items-center">
         <svg
@@ -76,7 +76,25 @@
           />
         </svg>
         <p class="text-center text-xs">Invest Target</p>
-      </NuxtLink>      
+      </NuxtLink>
+
+      <NuxtLink to="/login" class="flex flex-col items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
+          />
+        </svg>
+        <p class="text-center text-xs">Logout</p>
+      </NuxtLink>
     </div>
   </div>
 </template>
