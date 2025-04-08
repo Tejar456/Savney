@@ -1,13 +1,14 @@
 {
   "name": "savney",
   "version": "1.0.0",
-  "description": "savney project",  
-  "repository": "https://github.com/tejar456/savney", 
+  "description": "savney project",
+  "repository": "https://github.com/tejar456/savney",
   "author": "Tejar",
   "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "json-server": "json-server --watch be.json --port 4000",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -22,5 +23,8 @@
     "tailwindcss": "^4.0.9",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.3"
   }
 }

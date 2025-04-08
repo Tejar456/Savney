@@ -22,18 +22,18 @@
     for (let i = count - 1; i >= 0; i--) {
       const date = new Date();
       date.setDate(today.getDate() - i);
-      dates.push(date.toISOString().split("T")[0]); // Format as YYYY-MM-DD
+      dates.push(date.getDate().toString()); // Only get the date number
     }
     return dates;
-  };
+};
   
-  const labels = generateDateLabels(7); // Generate labels for the last 7 days
+  const labels = generateDateLabels(30); // Generate labels for the last 7 days
   const data = {
     labels: labels,
     datasets: [
       {
         label: "Income",
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [65, 59, 80, 81, 56, 55, 40, 70, 90, 100, 120, 130, 140, 150, 160, 170, 180, 100, 80, 90, 220, 150, 200, 250, 260, 270, 280, 290],
         fill: false,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.1,

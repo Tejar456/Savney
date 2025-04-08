@@ -1,0 +1,45 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "name": "Salary",
+      "date": "21/03/2025",
+      "amount": 5000000,
+      "type": "Income"
+    },
+    {
+      "id": 2,
+      "name": "Bukber",
+      "date": "20/03/2025",
+      "amount": 35000,
+      "type": "Expense"
+    },
+    {
+      "id": 3,
+      "name": "Electricity Bill",
+      "date": "19/03/2025",
+      "amount": 300000,
+      "type": "Expense"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "test@mail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "tejar@mail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 1743569525591,
+      "name": "John Doe",
+      "email": "tejar@gmail.com",
+      "password": "tejar"
+    }
+  ]
+}
