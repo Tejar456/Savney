@@ -1,9 +1,13 @@
 <template>
   <div class="fixed top-0 left-0 h-screen z-50">
     <div
-      class="bg-primary mx-auto flex flex-col items-center w-28 h-full py-5 text-white gap-6"
-    >
-      <NuxtLink to="/" class="flex flex-col items-center">
+      class="bg-primary mx-auto flex flex-col justify-center items-center w-28 h-full py-5 text-white gap-6"
+    >      
+      <NuxtLink
+        to="/"
+        class="flex flex-col items-center text-white/70"
+        :class="{ 'text-white/100': $route.path === '/' }"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -25,7 +29,11 @@
         </svg>
         <p class="text-center text-xs">Statistics</p>
       </NuxtLink>
-      <NuxtLink to="/transaction" class="flex flex-col items-center">
+      <NuxtLink
+        to="/transaction"
+        class="flex flex-col items-center text-white/70"
+        :class="{ 'text-white/100': $route.path === '/transaction' }"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -42,7 +50,11 @@
         </svg>
         <p class="text-center text-xs">Transaction</p>
       </NuxtLink>
-      <NuxtLink to="/autocut" class="flex flex-col items-center">
+      <NuxtLink
+        to="/autocut"
+        class="flex flex-col items-center text-white/70"
+        :class="{ 'text-white/100': $route.path === '/autocut' }"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -60,7 +72,11 @@
 
         <p class="text-center text-xs">Auto Cut</p>
       </NuxtLink>
-      <NuxtLink to="/investtarget" class="flex flex-col items-center">
+      <NuxtLink
+        to="/invest"
+        class="flex flex-col items-center text-white/70"
+        :class="{ 'text-white/100': $route.path === '/invest' }"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -75,10 +91,13 @@
             d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
           />
         </svg>
-        <p class="text-center text-xs">Invest Target</p>
+        <p class="text-center text-xs">Invest</p>
       </NuxtLink>
 
-      <NuxtLink to="/login" class="flex flex-col items-center">
+      <button
+        @click="handleLogout"
+        class="flex flex-col items-center fixed bottom-10 text-white"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -94,7 +113,24 @@
           />
         </svg>
         <p class="text-center text-xs">Logout</p>
-      </NuxtLink>
+      </button>
     </div>
   </div>
 </template>
+
+<script setup>
+const router = useRouter();
+const { removeToken } = useAuth();
+
+const handleLogout = async () => {
+  try {
+    removeToken();
+    await router.push("/login");
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+};
+</script>
+
+
+

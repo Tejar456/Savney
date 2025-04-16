@@ -14,21 +14,7 @@
         <img src="/assets/img/savney.png" alt="savney logo" class="w-16 h-16" />
         <h1 class="text-5xl text-primary">Savney</h1>
       </div>
-      <form class="w-full px-10" @submit.prevent="handleRegister">
-        <div class="mb-6">
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Name</label
-          >
-          <input
-            v-model="name"
-            type="text"
-            id="name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            required
-          />
-        </div>
+      <form class="w-full px-10" @submit.prevent="handleRegister">        
         <div class="mb-6">
           <label
             for="email"
@@ -53,6 +39,7 @@
             v-model="password"
             type="password"
             id="password"
+            minlength="8"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
           />
@@ -91,6 +78,9 @@ definePageMeta({
   layout: "auth",
 });
 
+import { usePush } from "notivue";
+
+const push = usePush();
 const router = useRouter();
 const name = ref("");
 const email = ref("");
@@ -99,39 +89,48 @@ const confirmPassword = ref("");
 
 const handleRegister = async () => {
   try {
-    // Validate passwords match
     if (password.value !== confirmPassword.value) {
-      alert("Passwords don't match!");
+      push.warn("Passwords don't match!");
       return;
     }
 
-    // Create new user object
-    const newUser = {
-      id: Date.now(), // Simple way to generate unique ID
-      name: name.value,
+    const newUser = {      
       email: email.value,
       password: password.value,
     };
 
-    // Send POST request to register new user
-    const response = await fetch("http://localhost:4000/users", {
+    const config = useRuntimeConfig();
+    const apiBaseUrl = config.public.apiBaseUrl;
+
+    const response = await fetch(`${apiBaseUrl}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json", 
       },
       body: JSON.stringify(newUser),
     });
-
-    if (!response.ok) {
-      throw new Error("Registration failed");
+    
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error("Server returned non-JSON response. Please check API endpoint.");
     }
 
-    // If successful, redirect to login page
-    alert("Registration successful! Please login.");
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Registration failed");
+    }
+
+    push.success("Registration successful! Please login.");
     router.push("/login");
   } catch (error) {
     console.error("Registration error:", error);
-    alert("Error during registration");
+    if (error instanceof SyntaxError) {
+      alert("Server error: Please check if the API is running correctly");
+    } else {
+      push.error(error.message || "Error during registration");
+    }
   }
 };
 </script>

@@ -63,30 +63,48 @@ definePageMeta({
   layout: "auth",
 });
 
+import { usePush } from "notivue";
+
+const push = usePush();
 const router = useRouter();
 const email = ref("");
 const password = ref("");
 
 const handleLogin = async () => {
   try {
-    const response = await fetch("http://localhost:4000/users");
-    const users = await response.json();
+    const config = useRuntimeConfig();
+    const apiBaseUrl = config.public.apiBaseUrl;
 
-    const user = users.find(
-      (u) => u.email === email.value && u.password === password.value
-    );
+    const response = await fetch(`${apiBaseUrl}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value,
+      }),
+    });
 
-    if (user) {
-      // Store user info in localStorage or state management
-      localStorage.setItem("user", JSON.stringify(user));
-      // Redirect to dashboard or home page
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error("Server returned non-JSON response");
+    }
+
+    const data = await response.json();
+
+    if (response.ok) {
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
       router.push("/");
     } else {
-      alert("Invalid email or password");
+      push.error(data.message || "Invalid email or password");
     }
   } catch (error) {
     console.error("Login error:", error);
-    alert("Error during login");
+    push.error(`Error during login: ${error.message}`);
   }
 };
 </script>

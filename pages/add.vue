@@ -5,9 +5,9 @@
         @click="activeTab = 'income'"
         :class="[
           'border border-primary font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center mb-6',
-          activeTab === 'income' 
-            ? 'bg-primary text-white' 
-            : 'bg-white text-primary hover:text-white hover:bg-primary'
+          activeTab === 'income'
+            ? 'bg-primary text-white'
+            : 'bg-white text-primary hover:text-white hover:bg-primary',
         ]"
       >
         Income
@@ -16,9 +16,9 @@
         @click="activeTab = 'expense'"
         :class="[
           'border border-primary font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center mb-6',
-          activeTab === 'expense' 
-            ? 'bg-primary text-white' 
-            : 'bg-white text-primary hover:text-white hover:bg-primary'
+          activeTab === 'expense'
+            ? 'bg-primary text-white'
+            : 'bg-white text-primary hover:text-white hover:bg-primary',
         ]"
       >
         Expense
@@ -30,6 +30,10 @@
 </template>
 
 <script setup>
-const route = useRoute()
-const activeTab = ref(route.query.source === 'expense' ? 'expense' : 'income')
+definePageMeta({
+  layout: "default",
+  middleware: "auth",
+});
+const route = useRoute();
+const activeTab = ref(route.query.source === "expense" ? "expense" : "income");
 </script>
