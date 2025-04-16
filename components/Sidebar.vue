@@ -1,8 +1,8 @@
 <template>
-  <div class="fixed bottom-3 w-full z-50 flex justify-center px-5">
+  <div class="fixed top-0 left-0 h-screen z-50">
     <div
-      class="bg-primary mx-auto flex justify-center items-center w-full py-4 rounded-lg text-white gap-6"
-    >
+      class="bg-primary mx-auto flex flex-col justify-center items-center w-28 h-full py-5 text-white gap-6"
+    >      
       <NuxtLink
         to="/"
         class="flex flex-col items-center text-white/70"
@@ -93,9 +93,10 @@
         </svg>
         <p class="text-center text-xs">Invest</p>
       </NuxtLink>
+
       <button
         @click="handleLogout"
-        class="flex flex-col items-center  text-white"
+        class="flex flex-col items-center fixed bottom-10 text-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -130,3 +131,6 @@ const handleLogout = async () => {
   }
 };
 </script>
+
+
+

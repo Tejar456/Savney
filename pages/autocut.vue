@@ -1,104 +1,189 @@
 <template>
-    <div>
-        <h1 class="text-center text-3xl font-semibold my-4 text-primary">
-            Auto Cut Balance
-        </h1>
-        <form class="w-full px-10">
-            <div class="mb-6">
-                <label for="balanch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Balanch</label>
-                <input type="number" id="balanch"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                    value="4.800.000" readonly />
-            </div>
-            <div class="mb-6">
-                <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Amount</label>
-                <input type="number" id="amount"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                    placeholder="Rp." required />
-            </div>
-            <div class="mb-6">
-                <label for="description"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                <input type="text" id="description"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                    placeholder="Food" required />
-            </div>
-            <div class="mb-6">
-                <label for="categories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
-                    option</label>
-                <select id="categories"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                    <option selected>Select Categoris</option>
-                    <option value="US">Food</option>
-                    <option value="CA">Transportation</option>
-                    <option value="FR">Invest</option>
-                    <option value="DE">Other</option>
-                </select>
-            </div>
+  <div class="p-5 md:p-10 h-full">
+    <h1 class="text-center text-3xl font-semibold my-4 text-primary">
+      Auto Cut Balance
+    </h1>
+    <form @submit.prevent="submitAutoCut()" class="w-full px-10">
+      <div class="mb-6">
+        <label
+          for="amount"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Amount</label
+        >
+        <input
+          v-model="autoCut.amount"
+          type="number"
+          id="amount"
+          required
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="description"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Description</label
+        >
+        <input
+          v-model="autoCut.description"
+          type="text"
+          id="description"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="categories"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Select a Category</label
+        >
+        <select
+          v-model="autoCut.category"
+          required
+          id="categories"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+        >
+          <option value="" disabled selected>Select Categories</option>
+          <option value="food">Food</option>
+          <option value="transport">Transport</option>
+          <option value="fashion">Fashion</option>
+          <option value="invest">Invest</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
 
-            <div class="relative mb-6">
-                <div class="absolute inset-y-12 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                    </svg>
-                </div>
-                <label for="datepicker-custom"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
-                <input id="datepicker-custom" type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                    placeholder="Select date">
-            </div>
+      <div class="mb-6">
+        <label
+          for="datepicker-custom"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Date</label
+        >
+        <input
+          v-model="autoCut.deduction_date"
+          id="datepicker-custom"
+          type="date"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+          placeholder="Select date"
+        />
+      </div>
 
-            <button type="submit"
-                class="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-green-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mb-6">
-                Add
-            </button>
-        </form>
-    </div>
+      <button
+        type="submit"
+        class="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-green-700 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center mb-6"
+      >
+        Add
+      </button>
+    </form>
+  </div>
 </template>
 
-
-
-
 <script setup>
-import { onMounted } from 'vue'
-import { useFlowbite } from '~/composables/useFlowbite';
+definePageMeta({
+  layout: "default",
+  middleware: "auth",
+});
 
-// initialize components based on data attribute selectors
-onMounted(() => {
+import { usePush } from "notivue";
+const { getToken } = useAuth();
 
-    useFlowbite((flowbite) => {
-        // set the target element of the input field
-        const $datepickerEl = document.getElementById('datepicker-custom');
+const push = usePush();
+const router = useRouter();
 
-        // optional options with default values and callback functions
-        const options = {
-            defaultDatepickerId: null,
-            autohide: false,
-            format: 'mm/dd/yyyy',
-            maxDate: null,
-            minDate: null,
-            orientation: 'bottom',
-            buttons: false,
-            autoSelectToday: false,
-            title: null,
-            language: 'en',
-            rangePicker: false,
-            onShow: () => { },
-            onHide: () => { },
-        };
+const autoCut = ref({
+  amount: "",
+  description: "",
+  category: "",
+  deduction_date: "",
+});
 
-        const instanceOptions = {
-            id: 'datepicker-custom-example',
-            override: true
-        };
+const submitAutoCut = async () => {
+  try {
+    const token = getToken();
+    const config = useRuntimeConfig();
+    const apiBaseUrl = config.public.apiBaseUrl;
 
-        const datepicker = new Datepicker($datepickerEl, options, instanceOptions);
+    const response = await fetch(`${apiBaseUrl}/autoCuts`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(autoCut.value),
     });
 
-})
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to create auto-cut");
+    }
+
+    push.success("Auto-cut created successfully!");
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
+  } catch (error) {
+    console.error("Error creating auto-cut:", error);
+    push.error("Failed to creating auto cut!");
+  }
+};
+
+import { onMounted } from "vue";
+import { useFlowbite } from "~/composables/useFlowbite";
+
+onMounted(() => {
+  const style = document.createElement("style");
+  style.textContent = `
+    .datepicker-picker .datepicker-cell.selected, 
+    .datepicker-picker .datepicker-cell.selected:hover {
+      background-color: rgba(17, 139, 80, 1) !important;
+      color: white !important;
+    }
+    .datepicker-picker .datepicker-header .datepicker-controls .button {
+      background-color: rgba(17, 139, 80, 1) !important;
+      color: white !important;
+    }
+    .datepicker-picker .datepicker-footer .datepicker-controls .button {
+      background-color: rgba(17, 139, 80, 1) !important;
+      color: white !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  useFlowbite((flowbite) => {
+    const $datepickerEl = document.getElementById("datepicker-custom");
+
+    const options = {
+      defaultDatepickerId: null,
+      autohide: true,
+      format: "yyyy-mm-dd",
+      maxDate: null,
+      minDate: null,
+      orientation: "bottom",
+      buttons: true,
+      autoSelectToday: false,
+      title: null,
+      language: "en",
+      rangePicker: false,
+      onSelect: (selectedDates, dateStr) => {
+        autoCut.value.deduction_date = dateStr;
+      },
+    };
+
+    const instanceOptions = {
+      id: "datepicker-custom-example",
+      override: true,
+    };
+
+    const datepicker = new Datepicker($datepickerEl, options, instanceOptions);
+
+    $datepickerEl.addEventListener("changeDate", (e) => {
+      const date = e.detail.datepicker.getDate();
+      const formattedDate = date.toISOString().split("T")[0];
+      autoCut.value.deduction_date = formattedDate;
+    });
+  });
+});
 </script>
