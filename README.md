@@ -3,18 +3,6 @@
 ## Description
 A modern web application built with Nuxt.js, featuring data visualization components and authentication system.
 
-## Project Structure
-```
-├── assets/          # Static assets (CSS, images)
-├── components/      # Vue components
-├── composables/     # Composable functions
-├── layouts/         # Page layouts
-├── pages/          # Application views
-├── public/         # Public static files
-├── server/         # Server-side code
-└── .nuxt/          # Nuxt build files
-```
-
 ## Getting Started
 
 ### Prerequisites
