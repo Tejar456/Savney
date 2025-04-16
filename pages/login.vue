@@ -89,7 +89,7 @@ const handleLogin = async () => {
 
     const contentType = response.headers.get("content-type");
     if (!contentType || !contentType.includes("application/json")) {
-      throw new Error("Server returned non-JSON response");
+      throw new Error("Server returned non-JSON response");            
     }
 
     const data = await response.json();
@@ -100,7 +100,7 @@ const handleLogin = async () => {
       }
       router.push("/");
     } else {
-      push.error(data.message || "Invalid email or password");
+      push.error("Invalid email or password");
     }
   } catch (error) {
     console.error("Login error:", error);

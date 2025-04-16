@@ -162,7 +162,7 @@ const today = new Date().toISOString().split("T")[0];
 
 const calculateInvestment = () => {
   if (!selectedDate.value) {
-    push.warn("Please select an investment end date!");
+    push.warning("Please select an investment end date!");
     return;
   }
 
@@ -174,7 +174,7 @@ const calculateInvestment = () => {
     (endDate.getMonth() - startDate.getMonth());
 
   if (diffInMonths < 0) {
-    push.warn("The date must be after today!");
+    push.warning("The date must be after today!");
     return;
   }
 
@@ -304,3 +304,5 @@ onMounted(() => {
   });
 });
 </script>
+
+
