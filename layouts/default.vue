@@ -1,5 +1,8 @@
 <template>
   <div>
+    <Notivue v-slot="item">
+      <Notification :item="item" />
+    </Notivue>
     <div class="flex lg:hidden">
       <Navbar />
     </div>

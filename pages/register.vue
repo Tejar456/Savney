@@ -90,7 +90,7 @@ const confirmPassword = ref("");
 const handleRegister = async () => {
   try {
     if (password.value !== confirmPassword.value) {
-      push.warn("Passwords don't match!");
+      push.warning("Passwords don't match!");
       return;
     }
 

@@ -105,7 +105,7 @@ const submitExpense = async () => {
     const token = getToken();
 
     if (!token) {
-      push.warn("Please login first");
+      push.warning("Please login first");
       setTimeout(() => {
         router.push("/login");
       }, 1500);
@@ -148,7 +148,7 @@ const submitExpense = async () => {
       error.message.includes("Unauthorized") ||
       error.response?.status === 401
     ) {
-      push.warn("Session expired. Please login again");
+      push.warning("Session expired. Please login again");
       setTimeout(() => {
         router.push("/login");
       }, 1500);
