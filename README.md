@@ -1,32 +1,8 @@
 # Savney Project
+Backend https://github.com/AmbarNingtyas/savney.git
 
 ## Description
 A modern web application built with Nuxt.js, featuring data visualization components and authentication system.
-
-## Features
-- Interactive data visualization with Linechart and Piechart components
-- Date selection with custom Datepicker component
-- Authentication system with dedicated layout
-- Responsive navigation with Navbar component
-- FlowBite integration for UI components
-
-## Tech Stack
-- Nuxt.js 3
-- Vue.js
-- TypeScript
-- FlowBite
-
-## Project Structure
-```
-├── assets/          # Static assets (CSS, images)
-├── components/      # Vue components
-├── composables/     # Composable functions
-├── layouts/         # Page layouts
-├── pages/          # Application views
-├── public/         # Public static files
-├── server/         # Server-side code
-└── .nuxt/          # Nuxt build files
-```
 
 ## Getting Started
 
