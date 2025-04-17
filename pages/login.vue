@@ -89,7 +89,7 @@ const handleLogin = async () => {
 
     const contentType = response.headers.get("content-type");
     if (!contentType || !contentType.includes("application/json")) {
-      throw new Error("Server returned non-JSON response");            
+      throw new Error("Server returned non-JSON response");
     }
 
     const data = await response.json();
@@ -107,4 +107,9 @@ const handleLogin = async () => {
     push.error(`Error during login: ${error.message}`);
   }
 };
+
+onMounted(() => {
+  alert("Saat ini website belum dapat dijalankan karena API backend-nya belum dideploy. Untuk mencoba website ini, Anda bisa meng-clone repositorinya secara lokal melalui GitHub: https://github.com/Tejar456/Savney.git");
+
+});
 </script>
