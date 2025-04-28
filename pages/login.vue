@@ -109,7 +109,7 @@ const handleLogin = async () => {
 };
 
 onMounted(() => {
-  alert("Saat ini website belum dapat dijalankan karena API backend-nya belum dideploy. Untuk mencoba website ini, Anda bisa meng-clone repositorinya secara lokal melalui GitHub: https://github.com/Tejar456/Savney.git");
+  //alert("Saat ini website belum dapat dijalankan karena API backend-nya belum dideploy. Untuk mencoba website ini, Anda bisa meng-clone repositorinya secara lokal melalui GitHub: https://github.com/Tejar456/Savney.git");
 
 });
 </script>
